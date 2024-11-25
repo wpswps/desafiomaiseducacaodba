@@ -151,6 +151,11 @@ WHERE
 GROUP BY 
     e.course_id;
 
+
+CREATE INDEX idx_person_metadata_fulltext 
+ON person 
+USING gin (to_tsvector('english', metadata::text));
+
 --------------------------------------------------------------------------
 
 
